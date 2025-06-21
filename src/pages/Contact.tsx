@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import PageTransition from '../components/ui/PageTransition';
 import Section from '../components/ui/Section';
 import Button from '../components/ui/Button';
+import IndiaMap from '../components/IndiaMap';
 import { MapPin, Phone, Mail, MessageCircle, Facebook, Instagram, Linkedin, Youtube, Twitter, CheckCircle2, Send, Globe } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -76,6 +77,8 @@ const Contact = () => {
     { icon: <Facebook />, name: 'Facebook', color: 'hover:bg-blue-600', href: 'https://www.facebook.com/share/1Bd1h8PYCn/' },
     { icon: <Youtube />, name: 'YouTube', color: 'hover:bg-red-600', href: 'https://www.youtube.com/@GenechordPharma' }
   ];
+
+  const operatingStates = ['Maharashtra', 'Goa', 'Gujarat', 'Chhattisgarh', 'Madhya Pradesh'];
 
   return (
     <PageTransition>
@@ -320,8 +323,70 @@ const Contact = () => {
         </div>
       </Section>
 
+      {/* Our Reach - India Map */}
+      <Section className="bg-gray-50">
+        <motion.div
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+        >
+          <h2 className="text-secondary-900 mb-4">Our Reach</h2>
+          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+            Genechord Pharmaceuticals has established a strong presence across key states in India,
+            serving patients and healthcare providers with our innovative solutions.
+          </p>
+        </motion.div>
+
+        <div className="bg-white rounded-xl shadow-md p-8">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+            >
+              <h3 className="text-2xl font-semibold mb-6 text-secondary-900">
+                States We Serve
+              </h3>
+              <div className="space-y-4">
+                {operatingStates.map((state, index) => (
+                  <motion.div
+                    key={index}
+                    className="bg-gray-50 p-4 rounded-lg flex items-center"
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.3, delay: index * 0.1 }}
+                  >
+                    <div className="w-4 h-4 rounded-full bg-primary-400 mr-4"></div>
+                    <span className="font-medium text-gray-800">{state}</span>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+            
+            <motion.div
+              className="relative"
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+            >
+              <div className="bg-gray-50 p-4 rounded-lg">
+                <IndiaMap 
+                  operatingStates={operatingStates}
+                  className="h-96"
+                />
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </Section>
+
       {/* FAQ Section */}
-      <Section className="bg-gray-50 py-12">
+      <Section className="bg-white py-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

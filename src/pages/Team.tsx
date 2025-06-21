@@ -2,7 +2,6 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import PageTransition from '../components/ui/PageTransition';
 import Section from '../components/ui/Section';
-import IndiaMap from '../components/IndiaMap';
 import { ArrowRightCircle, Heart, TrendingUp, Users, Zap, Sun, Stethoscope, Linkedin, Mail, ExternalLink, Award, Globe, Target, Brain, Handshake, Shield, Trophy, GraduationCap, Briefcase, Calendar } from 'lucide-react';
 
 const Team = () => {
@@ -48,10 +47,6 @@ const Team = () => {
       image: 'https://images.pexels.com/photos/5407206/pexels-photo-5407206.jpeg'
     }
   ];
-
-  const operatingStates = ['Maharashtra', 'Goa', 'Gujarat', 'Chhattisgarh', 'Madhya Pradesh'];
-  
-  const operatingCities = ['Mumbai'];
 
   return (
     <PageTransition>
@@ -305,93 +300,8 @@ const Team = () => {
         </div>
       </Section>
 
-      {/* Our Reach - India Map */}
-      <Section className="bg-gray-50">
-        <motion.div
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-        >
-          <h2 className="text-secondary-900 mb-4">Our Reach</h2>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            Genechord Pharmaceuticals has established a strong presence across key states in India,
-            serving patients and healthcare providers with our innovative solutions.
-          </p>
-        </motion.div>
-
-        <div className="bg-white rounded-xl shadow-md p-8">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-            >
-              <h3 className="text-2xl font-semibold mb-6 text-secondary-900">
-                States We Serve
-              </h3>
-              <div className="space-y-4">
-                {operatingStates.map((state, index) => (
-                  <motion.div
-                    key={index}
-                    className="bg-gray-50 p-4 rounded-lg flex items-center"
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.3, delay: index * 0.1 }}
-                  >
-                    <div className="w-4 h-4 rounded-full bg-primary-400 mr-4"></div>
-                    <span className="font-medium text-gray-800">{state}</span>
-                  </motion.div>
-                ))}
-              </div>
-
-              <h3 className="text-2xl font-semibold mt-8 mb-6 text-secondary-900">
-                Headquarters
-              </h3>
-              <div className="space-y-4">
-                <motion.div
-                  className="bg-primary-100 p-4 rounded-lg"
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.3, delay: operatingStates.length * 0.1 }}
-                >
-                  <div className="flex items-start">
-                    <div className="w-4 h-4 rounded-full bg-primary-400 mr-4 mt-1"></div>
-                    <div>
-                      <span className="font-medium text-gray-800 block">Mumbai, Maharashtra</span>
-                      <p className="text-sm text-gray-600 mt-1">B-811, Damji Shamji Corporate Square</p>
-                      <p className="text-sm text-gray-600">Laxmi Nagar, Ghatkopar East</p>
-                      <p className="text-sm text-gray-600">Mumbai – 400075</p>
-                    </div>
-                  </div>
-                </motion.div>
-              </div>
-            </motion.div>
-            
-            <motion.div
-              className="relative"
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-            >
-              <div className="bg-gray-50 p-4 rounded-lg">
-                <IndiaMap 
-                  operatingStates={operatingStates}
-                  className="h-96"
-                />
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </Section>
-
       {/* Our Culture */}
-      <Section className="bg-white">
+      <Section className="bg-gray-50">
         <div className="grid md:grid-cols-2 gap-16 items-center">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -410,28 +320,28 @@ const Team = () => {
               directly impacts lives. Because here, every breakthrough begins with people who care.
             </p>
             <div className="grid grid-cols-2 gap-4 mt-8">
-              <div className="bg-gray-50 p-4 rounded-lg">
+              <div className="bg-white p-4 rounded-lg shadow-sm">
                 <div className="flex items-center mb-2">
                   <Brain className="h-5 w-5 text-primary-400 mr-2" />
                   <h4 className="font-semibold text-primary-400">Innovation</h4>
                 </div>
                 <p className="text-gray-600 text-sm">We encourage bold thinking, fresh ideas, and novel approaches that push boundaries in reproductive medicine.</p>
               </div>
-              <div className="bg-gray-50 p-4 rounded-lg">
+              <div className="bg-white p-4 rounded-lg shadow-sm">
                 <div className="flex items-center mb-2">
                   <Handshake className="h-5 w-5 text-primary-400 mr-2" />
                   <h4 className="font-semibold text-primary-400">Collaboration</h4>
                 </div>
                 <p className="text-gray-600 text-sm">We work seamlessly across teams and disciplines—because real progress happens when we move forward together.</p>
               </div>
-              <div className="bg-gray-50 p-4 rounded-lg">
+              <div className="bg-white p-4 rounded-lg shadow-sm">
                 <div className="flex items-center mb-2">
                   <Shield className="h-5 w-5 text-primary-400 mr-2" />
                   <h4 className="font-semibold text-primary-400">Integrity</h4>
                 </div>
                 <p className="text-gray-600 text-sm">We lead with transparency, trust, and ethical responsibility in everything we do.</p>
               </div>
-              <div className="bg-gray-50 p-4 rounded-lg">
+              <div className="bg-white p-4 rounded-lg shadow-sm">
                 <div className="flex items-center mb-2">
                   <Trophy className="h-5 w-5 text-primary-400 mr-2" />
                   <h4 className="font-semibold text-primary-400">Excellence</h4>
