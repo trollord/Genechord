@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
 import PageTransition from '../components/ui/PageTransition';
 import Section from '../components/ui/Section';
-import { Pill, Heart, Brain, Leaf, PenTool, Microscope, Baby, Dna, Shield, Users } from 'lucide-react';
+import { Clock, Beaker, Sparkles } from 'lucide-react';
 
 const Products = () => {
+  // COMMENTED OUT: Product categories and filtering - will be restored later
+  /*
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
 
   const categories = [
@@ -112,10 +113,82 @@ const Products = () => {
   const filteredProducts = selectedCategory && selectedCategory !== 'all'
     ? products.filter(product => product.category === selectedCategory)
     : products;
+  */
 
   return (
     <PageTransition>
-      {/* Hero Section */}
+      {/* Coming Soon - Full Page */}
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary-100 via-white to-primary-50 pt-20">
+        <div className="container-custom">
+          <div className="max-w-4xl mx-auto text-center">
+            <motion.div
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="mb-12"
+            >
+              <div className="flex justify-center mb-8">
+                <div className="relative">
+                  <motion.div
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                  >
+                    <Beaker className="w-24 h-24 text-primary-400" />
+                  </motion.div>
+                  <motion.div
+                    animate={{ scale: [1, 1.2, 1] }}
+                    transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                    className="absolute -top-3 -right-3"
+                  >
+                    <Sparkles className="w-8 h-8 text-primary-300" />
+                  </motion.div>
+                </div>
+              </div>
+            </motion.div>
+
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="text-5xl md:text-7xl font-bold text-secondary-900 mb-8"
+            >
+              Coming Soon
+            </motion.h1>
+
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="text-xl md:text-2xl text-gray-700 mb-12 leading-relaxed max-w-3xl mx-auto"
+            >
+              We are developing innovative reproductive health solutions that will revolutionize fertility care. 
+              Our groundbreaking products are in the final stages of development.
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+              className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-lg border border-primary-200 max-w-md mx-auto"
+            >
+              <Clock className="w-12 h-12 text-primary-400 mx-auto mb-4" />
+              <p className="text-primary-600 font-medium mb-2 text-lg">Expected Launch</p>
+              <p className="text-secondary-900 font-bold text-3xl">Q2 2025</p>
+            </motion.div>
+
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.8 }}
+              className="text-gray-600 mt-8"
+            >
+              Stay tuned for updates on our revolutionary fertility solutions
+            </motion.p>
+          </div>
+        </div>
+      </div>
+
+      {/* COMMENTED OUT: Hero Section - will be restored later
       <div className="relative pt-32 pb-20 bg-gradient-to-b from-primary-100 via-primary-100/30 to-white">
         <div className="container-custom">
           <div className="max-w-3xl mx-auto text-center">
@@ -133,14 +206,15 @@ const Products = () => {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
-              Discover our innovative reproductive health solutions designed to support every step of the fertility journey.
-              Each product is developed with the highest standards of quality, safety, and efficacy.
+              We are developing innovative reproductive health solutions designed to support every step of the fertility journey.
+              Each product will be developed with the highest standards of quality, safety, and efficacy.
             </motion.p>
           </div>
         </div>
       </div>
+      */}
 
-      {/* Product Categories */}
+      {/* COMMENTED OUT: Product Categories and Filters - will be restored later
       <Section className="bg-white pb-0">
         <div className="flex flex-wrap justify-center gap-4 mb-12">
           {categories.map(category => (
@@ -161,8 +235,9 @@ const Products = () => {
           ))}
         </div>
       </Section>
+      */}
 
-      {/* Products List */}
+      {/* COMMENTED OUT: Products List - will be restored later
       <Section className="bg-white">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredProducts.map((product, index) => (
@@ -217,8 +292,9 @@ const Products = () => {
           ))}
         </div>
       </Section>
+      */}
 
-      {/* Research & Development */}
+      {/* COMMENTED OUT: Research & Development - will be restored later
       <Section className="bg-gray-50">
         <motion.div 
           className="text-center mb-12"
@@ -280,8 +356,9 @@ const Products = () => {
           </div>
         </div>
       </Section>
+      */}
 
-      {/* Quality Standards */}
+      {/* COMMENTED OUT: Quality Standards - will be restored later
       <Section className="bg-primary-400 text-white">
         <div className="max-w-4xl mx-auto text-center">
           <motion.h2 
@@ -324,6 +401,7 @@ const Products = () => {
           </div>
         </div>
       </Section>
+      */}
     </PageTransition>
   );
 };

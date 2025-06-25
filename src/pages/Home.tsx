@@ -10,6 +10,8 @@ import Hero from '../components/home/Hero';
 import VideoSection from '../components/home/VideoSection';
 
 const Home = () => {
+  // COMMENTED OUT: Featured products section - will be restored later
+  /*
   const featuredProducts = [
     {
       id: 'oofrag',
@@ -33,6 +35,7 @@ const Home = () => {
       image: 'https://images.pexels.com/photos/3825569/pexels-photo-3825569.jpeg',
     },
   ];
+  */
 
   return (
     <PageTransition>
@@ -126,7 +129,7 @@ const Home = () => {
       {/* Video Section */}
       <VideoSection />
 
-      {/* Featured Products */}
+      {/* COMMENTED OUT: Featured Products Section - will be restored later
       <Section className="bg-gray-50 py-24">
         <motion.div 
           className="text-center mb-16"
@@ -183,6 +186,7 @@ const Home = () => {
           </Link>
         </div>
       </Section>
+      */}
 
       {/* Safety Standards Section */}
       <Section className="bg-white py-24">
