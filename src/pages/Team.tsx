@@ -89,13 +89,13 @@ const Team = () => {
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
               <div className="grid lg:grid-cols-3 gap-0">
-                {/* Image Section - Now smaller (1/3 width) */}
+                {/* Image Section - Responsive sizing */}
                 <div className={`relative ${index % 2 === 1 ? 'lg:order-2' : ''}`}>
-                  <div className="h-64 lg:h-full overflow-hidden">
+                  <div className="h-80 sm:h-96 lg:h-full min-h-96 overflow-hidden">
                     <img 
                       src={member.image}
                       alt={member.name}
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover object-top"
                     />
                   </div>
                   {/* Experience Badge (only for Palaniappan) */}
@@ -110,14 +110,14 @@ const Team = () => {
                 </div>
 
                 {/* Content Section - Now larger (2/3 width) */}
-                <div className={`lg:col-span-2 p-8 lg:p-10 flex flex-col justify-center ${index % 2 === 1 ? 'lg:order-1' : ''}`}>
-                  <h3 className="text-2xl lg:text-3xl font-bold mb-2 text-secondary-900">
+                <div className={`lg:col-span-2 p-6 sm:p-8 lg:p-10 flex flex-col justify-center ${index % 2 === 1 ? 'lg:order-1' : ''}`}>
+                  <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-2 text-secondary-900">
                     {member.name}
                   </h3>
-                  <p className="text-primary-400 font-semibold text-lg mb-6">{member.role}</p>
+                  <p className="text-primary-400 font-semibold text-base sm:text-lg mb-4 sm:mb-6">{member.role}</p>
                   
                   {/* Education & Experience Info */}
-                  <div className="flex flex-wrap gap-4 mb-6">
+                  <div className="flex flex-wrap gap-4 mb-4 sm:mb-6">
                     <div className="flex items-center text-gray-600">
                       <GraduationCap className="w-4 h-4 mr-2 text-primary-400" />
                       <span className="text-sm">{member.education}</span>
@@ -131,14 +131,14 @@ const Team = () => {
                   </div>
                   
                   {/* Bio */}
-                  <p className="text-gray-700 leading-relaxed mb-6">
+                  <p className="text-gray-700 leading-relaxed mb-4 sm:mb-6 text-sm sm:text-base">
                     {member.bio}
                   </p>
                   
                   {/* Key Strengths */}
-                  <div className="mb-6">
-                    <h4 className="font-bold text-secondary-900 mb-4 text-lg">Key Strengths:</h4>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                  <div className="mb-4 sm:mb-6">
+                    <h4 className="font-bold text-secondary-900 mb-3 sm:mb-4 text-base sm:text-lg">Key Strengths:</h4>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-2 sm:gap-3">
                       {member.keyStrengths.map((strength, idx) => (
                         <div key={idx} className="flex items-start">
                           <div className="w-2 h-2 bg-primary-400 rounded-full mr-3 mt-2 flex-shrink-0"></div>
