@@ -10,32 +10,45 @@ import Hero from '../components/home/Hero';
 import VideoSection from '../components/home/VideoSection';
 
 const Home = () => {
-  // COMMENTED OUT: Featured products section - will be restored later
-  /*
   const featuredProducts = [
-    {
-      id: 'oofrag',
-      name: 'OOFRAG',
-      tagline: 'Because the strength of life begins with the strength of the oocyte.',
-      description: 'The first scientifically formulated supplement targeting oocyte fragmentation at its root with dual-action precision.',
-      image: 'https://images.pexels.com/photos/3825527/pexels-photo-3825527.jpeg',
-    },
-    {
+   {
       id: 'blastocare',
       name: 'BLASTOCARE',
-      tagline: 'Even a perfect embryo needs the perfect home.',
+      category: 'ivf-support',
       description: 'Comprehensive endometrial support designed to enhance implantation success by creating the optimal uterine environment.',
-      image: 'https://images.pexels.com/photos/3825586/pexels-photo-3825586.jpeg',
+      image: '/BlastoCare.jpg',
+      keyFeatures: [
+        'Enhances decidualization and immune tolerance',
+        'Improves uteroplacental blood flow',
+        'Manages hydrocortisone-induced stress',
+        'Relaxes uterine musculature',
+        'Supports trophoblast-endometrium communication'
+      ],
+      tagline: 'Even a perfect embryo needs the perfect home.'
     },
     {
-      id: 'chromosafe',
-      name: 'CHROMOSAFE',
-      tagline: 'Because your DNA carries more than genes—it carries generations.',
-      description: 'Next-generation solution rooted in reproductive epigenetics, supporting sperm health at the genomic level.',
-      image: 'https://images.pexels.com/photos/3825569/pexels-photo-3825569.jpeg',
+      id: 'manseed',
+      name: 'MANSEED',
+      tagline: 'Reclaim your role in the journey to parenthood.',
+      description: 'Advanced reproductive science designed to fill key gaps in spermatogenesis and optimize male fertility.',
+       image: './Manseed.jpg',
     },
+     {
+      id: 'oreserve',
+      name: 'ORESERVE',
+      category: 'female-fertility',
+      description: 'Targeted support for women navigating Diminished Ovarian Reserve with a science-backed approach to improving ovarian response.',
+      image: './Oreserve.JPG',
+      keyFeatures: [
+        'Improves Antral Follicle Count (AFC)',
+        'Enhances ovarian response',
+        'Supports mitochondrial function',
+        'Reduces oxidative stress',
+        'Restores follicular integrity'
+      ],
+      tagline: "Because there shouldn't be a deadline on starting a family."
+    }
   ];
-  */
 
   return (
     <PageTransition>
@@ -105,7 +118,7 @@ const Home = () => {
               transition={{ duration: 0.5, delay: 0.2 }}
             >
               <img 
-                src="https://images.pexels.com/photos/3825569/pexels-photo-3825569.jpeg" 
+                src="https://images.pexels.com/photos/3938023/pexels-photo-3938023.jpeg" 
                 alt="Quality Control Laboratory" 
                 className="rounded-lg shadow-md h-60 w-full object-cover"
               />
@@ -117,7 +130,7 @@ const Home = () => {
               transition={{ duration: 0.5, delay: 0.3 }}
             >
               <img 
-                src="https://images.pexels.com/photos/3825582/pexels-photo-3825582.jpeg" 
+                src="https://images.pexels.com/photos/3938022/pexels-photo-3938022.jpeg" 
                 alt="Pharmaceutical Manufacturing Facility" 
                 className="rounded-lg shadow-md h-60 w-full object-cover mt-8 md:mt-4 lg:mt-8"
               />
@@ -129,7 +142,7 @@ const Home = () => {
       {/* Video Section */}
       <VideoSection />
 
-      {/* COMMENTED OUT: Featured Products Section - will be restored later
+      {/* Featured Products */}
       <Section className="bg-gray-50 py-24">
         <motion.div 
           className="text-center mb-16"
@@ -186,7 +199,6 @@ const Home = () => {
           </Link>
         </div>
       </Section>
-      */}
 
       {/* Safety Standards Section */}
       <Section className="bg-white py-24">

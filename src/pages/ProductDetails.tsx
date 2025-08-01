@@ -40,7 +40,7 @@ const ProductDetails = () => {
       category: 'IVF Support',
       tagline: 'Even a perfect embryo needs the perfect home.',
       description: 'For many couples navigating IVF, success isn\'t just about creating a healthy embryo—it\'s about giving it the best chance to implant and grow. Blastocare is designed to change that by offering comprehensive endometrial support that goes beyond single-molecule solutions.',
-      image: 'https://images.pexels.com/photos/3825586/pexels-photo-3825586.jpeg',
+      image: '/BlastoCare.jpg',
       keyFeatures: [
         'Enhances decidualization and immune tolerance',
         'Improves uteroplacental blood flow',
@@ -112,7 +112,7 @@ const ProductDetails = () => {
       category: 'Male Fertility',
       tagline: 'Reclaim your role in the journey to parenthood.',
       description: 'In a world where dreams of parenthood are often fought quietly behind closed doors, male infertility remains one of the most under-discussed challenges. Modern lifestyles, rising stress, environmental toxins, and age-related decline have led to a steady rise in male infertility. ManSeed is designed to fill key gaps in spermatogenesis.',
-      image: 'https://images.pexels.com/photos/3825527/pexels-photo-3825527.jpeg',
+      image: '/Manseed.jpg',
       keyFeatures: [
         'Improves sperm count',
         'Enhances motility and morphology',
@@ -136,7 +136,7 @@ const ProductDetails = () => {
       category: 'Female Fertility',
       tagline: "Because there shouldn't be a deadline on starting a family.",
       description: 'When time feels like it\'s slipping away, you need more than reassurance—you need something that stands with you. For many women, Diminished Ovarian Reserve (DOR) doesn\'t announce itself—it reveals itself through questions, delays, and unexpected detours. It\'s like racing a clock you didn\'t know had started. The eggs are fewer, the options narrower—and the dream of motherhood suddenly feels like it comes with an expiration date. That\'s where ORESERVE steps in.',
-      image: 'https://images.pexels.com/photos/3825586/pexels-photo-3825586.jpeg',
+      image: '/Oreserve.JPG',
       keyFeatures: [
         'Improves Antral Follicle Count (AFC)',
         'Enhances ovarian response',

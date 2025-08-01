@@ -1,44 +1,43 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import PageTransition from '../components/ui/PageTransition';
 import Section from '../components/ui/Section';
-import { Clock, Beaker, Sparkles } from 'lucide-react';
+import { Pill, Heart, Baby, Shield, Users } from 'lucide-react';
 
 const Products = () => {
-  // COMMENTED OUT: Product categories and filtering - will be restored later
-  /*
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
 
   const categories = [
     { id: 'all', name: 'All Products', icon: <Pill className="h-5 w-5" /> },
-    { id: 'reproductive', name: 'Reproductive Health', icon: <Baby className="h-5 w-5" /> },
+    // { id: 'reproductive', name: 'Reproductive Health', icon: <Baby className="h-5 w-5" /> },
     { id: 'male-fertility', name: 'Male Fertility', icon: <Users className="h-5 w-5" /> },
     { id: 'female-fertility', name: 'Female Fertility', icon: <Heart className="h-5 w-5" /> },
     { id: 'ivf-support', name: 'IVF Support', icon: <Shield className="h-5 w-5" /> },
   ];
 
   const products = [
-    {
-      id: 'oofrag',
-      name: 'OOFRAG',
-      category: 'female-fertility',
-      description: 'The first scientifically formulated supplement targeting oocyte fragmentation at its root with dual-action precision.',
-      image: 'https://images.pexels.com/photos/3825527/pexels-photo-3825527.jpeg',
-      keyFeatures: [
-        'Cellular energy by day',
-        'Deep cellular repair by night',
-        'Stabilizes microtubules',
-        'Restores spindle assembly',
-        'Prevents chromatin breakdown'
-      ],
-      tagline: 'Because the strength of life begins with the strength of the oocyte.'
-    },
+    // {
+    //   id: 'oofrag',
+    //   name: 'OOFRAG',
+    //   category: 'female-fertility',
+    //   description: 'The first scientifically formulated supplement targeting oocyte fragmentation at its root with dual-action precision.',
+    //   image: 'https://images.pexels.com/photos/3825527/pexels-photo-3825527.jpeg',
+    //   keyFeatures: [
+    //     'Cellular energy by day',
+    //     'Deep cellular repair by night',
+    //     'Stabilizes microtubules',
+    //     'Restores spindle assembly',
+    //     'Prevents chromatin breakdown'
+    //   ],
+    //   tagline: 'Because the strength of life begins with the strength of the oocyte.'
+    // },
     {
       id: 'blastocare',
       name: 'BLASTOCARE',
       category: 'ivf-support',
       description: 'Comprehensive endometrial support designed to enhance implantation success by creating the optimal uterine environment.',
-      image: 'https://images.pexels.com/photos/3825586/pexels-photo-3825586.jpeg',
+      image: '/BlastoCare.jpg',
       keyFeatures: [
         'Enhances decidualization and immune tolerance',
         'Improves uteroplacental blood flow',
@@ -48,42 +47,42 @@ const Products = () => {
       ],
       tagline: 'Even a perfect embryo needs the perfect home.'
     },
-    {
-      id: 'chromosafe',
-      name: 'CHROMOSAFE',
-      category: 'male-fertility',
-      description: 'Next-generation solution rooted in reproductive epigenetics, supporting sperm health at the genomic level.',
-      image: 'https://images.pexels.com/photos/3825569/pexels-photo-3825569.jpeg',
-      keyFeatures: [
-        'Reduces DNA strand fragmentation',
-        'Enhances methylation precision',
-        'Supports chromatin remodeling',
-        'Protects genetic blueprint',
-        'Improves sperm DNA integrity'
-      ],
-      tagline: 'Because your DNA carries more than genes—it carries generations.'
-    },
-    {
-      id: 'embrotrans',
-      name: 'EMBROTRANS',
-      category: 'ivf-support',
-      description: 'Scientifically designed formula supporting the critical 48-72 hour window after embryo transfer.',
-      image: 'https://images.pexels.com/photos/3825582/pexels-photo-3825582.jpeg',
-      keyFeatures: [
-        'Optimizes endometrial environment',
-        'Facilitates trophoblast adhesion',
-        'Modulates immune activity',
-        'Maintains uterine calm',
-        'First-in-class post-transfer support'
-      ],
-      tagline: 'For the woman who has done everything right.'
-    },
+    // {
+    //   id: 'chromosafe',
+    //   name: 'CHROMOSAFE',
+    //   category: 'male-fertility',
+    //   description: 'Next-generation solution rooted in reproductive epigenetics, supporting sperm health at the genomic level.',
+    //   image: 'https://images.pexels.com/photos/3825569/pexels-photo-3825569.jpeg',
+    //   keyFeatures: [
+    //     'Reduces DNA strand fragmentation',
+    //     'Enhances methylation precision',
+    //     'Supports chromatin remodeling',
+    //     'Protects genetic blueprint',
+    //     'Improves sperm DNA integrity'
+    //   ],
+    //   tagline: 'Because your DNA carries more than genes—it carries generations.'
+    // },
+    // {
+    //   id: 'embrotrans',
+    //   name: 'EMBROTRANS',
+    //   category: 'ivf-support',
+    //   description: 'Scientifically designed formula supporting the critical 48-72 hour window after embryo transfer.',
+    //   image: 'https://images.pexels.com/photos/3825582/pexels-photo-3825582.jpeg',
+    //   keyFeatures: [
+    //     'Optimizes endometrial environment',
+    //     'Facilitates trophoblast adhesion',
+    //     'Modulates immune activity',
+    //     'Maintains uterine calm',
+    //     'First-in-class post-transfer support'
+    //   ],
+    //   tagline: 'For the woman who has done everything right.'
+    // },
     {
       id: 'manseed',
       name: 'MANSEED',
       category: 'male-fertility',
       description: 'Advanced reproductive science designed to fill key gaps in spermatogenesis and optimize male fertility.',
-      image: 'https://images.pexels.com/photos/3825527/pexels-photo-3825527.jpeg',
+      image: '/Manseed.jpg',
       keyFeatures: [
         'Improves sperm count',
         'Enhances motility and morphology',
@@ -98,7 +97,7 @@ const Products = () => {
       name: 'ORESERVE',
       category: 'female-fertility',
       description: 'Targeted support for women navigating Diminished Ovarian Reserve with a science-backed approach to improving ovarian response.',
-      image: 'https://images.pexels.com/photos/3825586/pexels-photo-3825586.jpeg',
+      image: './Oreserve.JPG',
       keyFeatures: [
         'Improves Antral Follicle Count (AFC)',
         'Enhances ovarian response',
@@ -113,82 +112,10 @@ const Products = () => {
   const filteredProducts = selectedCategory && selectedCategory !== 'all'
     ? products.filter(product => product.category === selectedCategory)
     : products;
-  */
 
   return (
     <PageTransition>
-      {/* Coming Soon - Full Page */}
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary-100 via-white to-primary-50 pt-20">
-        <div className="container-custom">
-          <div className="max-w-4xl mx-auto text-center">
-            <motion.div
-              initial={{ scale: 0.8, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-              className="mb-12"
-            >
-              <div className="flex justify-center mb-8">
-                <div className="relative">
-                  <motion.div
-                    animate={{ rotate: 360 }}
-                    transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                  >
-                    <Beaker className="w-24 h-24 text-primary-400" />
-                  </motion.div>
-                  <motion.div
-                    animate={{ scale: [1, 1.2, 1] }}
-                    transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                    className="absolute -top-3 -right-3"
-                  >
-                    <Sparkles className="w-8 h-8 text-primary-300" />
-                  </motion.div>
-                </div>
-              </div>
-            </motion.div>
-
-            <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-5xl md:text-7xl font-bold text-secondary-900 mb-8"
-            >
-              Coming Soon
-            </motion.h1>
-
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="text-xl md:text-2xl text-gray-700 mb-12 leading-relaxed max-w-3xl mx-auto"
-            >
-              We are developing innovative reproductive health solutions that will revolutionize fertility care. 
-              Our groundbreaking products are in the final stages of development.
-            </motion.p>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
-              className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-lg border border-primary-200 max-w-md mx-auto"
-            >
-              <Clock className="w-12 h-12 text-primary-400 mx-auto mb-4" />
-              <p className="text-primary-600 font-medium mb-2 text-lg">Expected Launch</p>
-              <p className="text-secondary-900 font-bold text-3xl">Q2 2025</p>
-            </motion.div>
-
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.8 }}
-              className="text-gray-600 mt-8"
-            >
-              Stay tuned for updates on our revolutionary fertility solutions
-            </motion.p>
-          </div>
-        </div>
-      </div>
-
-      {/* COMMENTED OUT: Hero Section - will be restored later
+      {/* Hero Section */}
       <div className="relative pt-32 pb-20 bg-gradient-to-b from-primary-100 via-primary-100/30 to-white">
         <div className="container-custom">
           <div className="max-w-3xl mx-auto text-center">
@@ -206,15 +133,14 @@ const Products = () => {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
-              We are developing innovative reproductive health solutions designed to support every step of the fertility journey.
-              Each product will be developed with the highest standards of quality, safety, and efficacy.
+              Discover our innovative reproductive health solutions designed to support every step of the fertility journey.
+              Each product is developed with the highest standards of quality, safety, and efficacy.
             </motion.p>
           </div>
         </div>
       </div>
-      */}
 
-      {/* COMMENTED OUT: Product Categories and Filters - will be restored later
+      {/* Product Categories */}
       <Section className="bg-white pb-0">
         <div className="flex flex-wrap justify-center gap-4 mb-12">
           {categories.map(category => (
@@ -235,9 +161,8 @@ const Products = () => {
           ))}
         </div>
       </Section>
-      */}
 
-      {/* COMMENTED OUT: Products List - will be restored later
+      {/* Products List */}
       <Section className="bg-white">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredProducts.map((product, index) => (
@@ -292,9 +217,8 @@ const Products = () => {
           ))}
         </div>
       </Section>
-      */}
 
-      {/* COMMENTED OUT: Research & Development - will be restored later
+      {/* Research & Development */}
       <Section className="bg-gray-50">
         <motion.div 
           className="text-center mb-12"
@@ -356,9 +280,8 @@ const Products = () => {
           </div>
         </div>
       </Section>
-      */}
 
-      {/* COMMENTED OUT: Quality Standards - will be restored later
+      {/* Quality Standards */}
       <Section className="bg-primary-400 text-white">
         <div className="max-w-4xl mx-auto text-center">
           <motion.h2 
@@ -401,7 +324,6 @@ const Products = () => {
           </div>
         </div>
       </Section>
-      */}
     </PageTransition>
   );
 };
