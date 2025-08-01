@@ -17,7 +17,7 @@ const Team = () => {
         'Deep understanding of reproductive healthcare challenges',
         'Expertise in pharmaceutical manufacturing and development'
       ],
-      image: 'https://images.pexels.com/photos/5327656/pexels-photo-5327656.jpeg'
+      image: './jaineel.JPG'
     },
     {
       name: 'Gautam Mehta',
@@ -30,7 +30,7 @@ const Team = () => {
         'Venture capital and business leadership experience',
         'Financial discipline and strategic governance'
       ],
-      image: 'https://images.pexels.com/photos/2381069/pexels-photo-2381069.jpeg'
+      image: './gautam.JPG'
     },
     {
       name: 'Palaniappan Subbiah Chettiar',
@@ -44,7 +44,7 @@ const Team = () => {
         'Strategic sales planning and territory management',
         'Team leadership and sales force development'
       ],
-      image: 'https://images.pexels.com/photos/5407206/pexels-photo-5407206.jpeg'
+      image: './palani.JPG'
     }
   ];
 
@@ -359,22 +359,22 @@ const Team = () => {
           >
             <div className="grid grid-cols-2 gap-4">
               <img 
-                src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg" 
+                src="./team1.jpeg" 
                 alt="Team Collaboration" 
                 className="rounded-lg shadow-md h-48 w-full object-cover"
               />
               <img 
-                src="https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg" 
+                src="./team2.jpeg" 
                 alt="Team Meeting" 
                 className="rounded-lg shadow-md h-48 w-full object-cover mt-8"
               />
               <img 
-                src="https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg" 
+                src="./team3.jpeg" 
                 alt="Research Discussion" 
                 className="rounded-lg shadow-md h-48 w-full object-cover"
               />
               <img 
-                src="https://images.pexels.com/photos/1181622/pexels-photo-1181622.jpeg" 
+                src="./team4.JPG" 
                 alt="Office Culture" 
                 className="rounded-lg shadow-md h-48 w-full object-cover mt-8"
               />
