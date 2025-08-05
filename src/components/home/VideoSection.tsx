@@ -54,7 +54,7 @@ const VideoSection = () => {
             <div className="aspect-w-16 aspect-h-9">
               <iframe
                 className="w-full h-[400px]"
-                src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1"
+                src="https://www.youtube.com/embed/nLtXH2qUqHg?si=UEWm2lTh_N-vcntE&autoplay=1&rel=0"
                 title="Genechord Corporate Video"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
