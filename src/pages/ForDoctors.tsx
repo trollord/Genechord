@@ -18,10 +18,12 @@ const ForDoctors = () => {
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [formStep, setFormStep] = useState(1);
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const validateMedicalRegNo = (regNo: string) => {
     // Basic validation - this would be replaced with actual validation logic
-    return regNo.length >= 6 && /^[A-Za-z0-9]+$/.test(regNo);
+    // return regNo.length >= 6 && /^[A-Za-z0-9]+$/.test(regNo);
+    return true;
   };
 
   const validateMobile = (mobile: string) => {
@@ -104,12 +106,67 @@ const ForDoctors = () => {
     setFormStep(1);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (validateStep2()) {
-      // Submit the form data
-      setSubmitted(true);
+    // Only proceed if we're on the final step
+    if (formStep !== 2) {
+      handleNext();
+      return;
+    }
+    
+    if (!validateStep2()) {
+      return;
+    }
+    
+    setIsSubmitting(true);
+    
+    try {
+      // Format the message to include all the extra fields
+      const messageContent = `
+Medical Registration Request:
+
+Name: ${formData.name}
+Medical Registration Number: ${formData.medicalRegNo}
+Mobile: ${formData.mobile}
+Email: ${formData.email}
+Specialty: ${formData.specialty}
+
+Additional Information:
+${formData.message || 'None provided'}
+      `.trim();
+
+      const reqBody = {
+        name: formData.name,
+        email: formData.email,
+        phone: formData.mobile,
+        message: messageContent,
+        To: 'mskasan30@gmail.com' // Change this to your desired recipient
+      };
+
+      const response = await fetch('https://cqgo2gggpg.execute-api.ap-northeast-1.amazonaws.com/default/mailer_function', {
+        method: 'POST',
+        mode: 'cors',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(reqBody),
+      });
+
+      if (response.ok) {
+        setSubmitted(true);
+        // Reset form if needed
+        // setFormData({ name: '', medicalRegNo: '', mobile: '', email: '', specialty: '', message: '' });
+        // setFormStep(1);
+      } else {
+        throw new Error('Failed to submit form');
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      alert('Failed to submit form. Please try again.');
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -357,8 +414,8 @@ const ForDoctors = () => {
                         >
                           Back
                         </Button>
-                        <Button type="submit">
-                          Submit Registration
+                        <Button type="submit" disabled={isSubmitting}>
+                          {isSubmitting ? 'Submitting...' : 'Submit Registration'}
                         </Button>
                       </div>
                     </motion.div>

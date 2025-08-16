@@ -4,18 +4,21 @@ import PageTransition from '../components/ui/PageTransition';
 import Section from '../components/ui/Section';
 import Button from '../components/ui/Button';
 import IndiaMap from '../components/IndiaMap';
-import { MapPin, Phone, Mail, MessageCircle, Facebook, Instagram, Linkedin, Youtube, Twitter, CheckCircle2, Send, Globe } from 'lucide-react';
+import { MapPin, Phone, Mail, MessageCircle, Facebook, Instagram, Linkedin, Youtube, Twitter, CheckCircle2, Send, Globe, Loader2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    phone: '',
     subject: '',
     message: '',
   });
   
   const [submitted, setSubmitted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState('');
   
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -23,11 +26,53 @@ const Contact = () => {
       ...prev,
       [name]: value
     }));
+    // Clear error when user starts typing
+    if (error) setError('');
   };
   
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setIsLoading(true);
+    setError('');
+    
+    try {
+      const reqBody = {
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        message: `Subject: ${formData.subject}\n\n${formData.message}`,
+        To: 'mskasan30@gmail.com'
+      };
+
+      const response = await fetch('https://cqgo2gggpg.execute-api.ap-northeast-1.amazonaws.com/default/mailer_function', {
+        method: 'POST',
+        mode: 'cors',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(reqBody),
+      });
+
+      if (response.ok) {
+        setSubmitted(true);
+        // Reset form
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          subject: '',
+          message: '',
+        });
+      } else {
+        throw new Error('Failed to send message');
+      }
+    } catch (err) {
+      setError('Failed to send message. Please try again or contact us directly.');
+      console.error('Form submission error:', err);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const contactInfo = [
@@ -151,6 +196,17 @@ const Contact = () => {
                   className="bg-white rounded-xl p-6 shadow-lg"
                 >
                   <h2 className="text-xl font-semibold text-secondary-900 mb-6">Send Us a Message</h2>
+                  
+                  {error && (
+                    <motion.div
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className="mb-4 p-3 bg-red-50 border border-red-200 rounded-lg text-red-600 text-sm"
+                    >
+                      {error}
+                    </motion.div>
+                  )}
+                  
                   <form onSubmit={handleSubmit} className="space-y-4">
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <motion.div
@@ -166,6 +222,7 @@ const Contact = () => {
                           onChange={handleInputChange}
                           className="input focus:ring-primary-400"
                           required
+                          disabled={isLoading}
                         />
                       </motion.div>
                       <motion.div
@@ -181,28 +238,48 @@ const Contact = () => {
                           onChange={handleInputChange}
                           className="input focus:ring-primary-400"
                           required
+                          disabled={isLoading}
+                        />
+                      </motion.div>
+                    </div>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.3 }}
+                      >
+                        <label className="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
+                        <input
+                          type="tel"
+                          name="phone"
+                          value={formData.phone}
+                          onChange={handleInputChange}
+                          className="input focus:ring-primary-400"
+                          required
+                          disabled={isLoading}
+                        />
+                      </motion.div>
+                      <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.4 }}
+                      >
+                        <label className="block text-sm font-medium text-gray-700 mb-2">Subject</label>
+                        <input
+                          type="text"
+                          name="subject"
+                          value={formData.subject}
+                          onChange={handleInputChange}
+                          className="input focus:ring-primary-400"
+                          required
+                          disabled={isLoading}
                         />
                       </motion.div>
                     </div>
                     <motion.div
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.3 }}
-                    >
-                      <label className="block text-sm font-medium text-gray-700 mb-2">Subject</label>
-                      <input
-                        type="text"
-                        name="subject"
-                        value={formData.subject}
-                        onChange={handleInputChange}
-                        className="input focus:ring-primary-400"
-                        required
-                      />
-                    </motion.div>
-                    <motion.div
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.4 }}
+                      transition={{ delay: 0.5 }}
                     >
                       <label className="block text-sm font-medium text-gray-700 mb-2">Message</label>
                       <textarea
@@ -212,15 +289,29 @@ const Contact = () => {
                         rows={4}
                         className="input focus:ring-primary-400"
                         required
+                        disabled={isLoading}
                       ></textarea>
                     </motion.div>
                     <motion.div
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.5 }}
+                      transition={{ delay: 0.6 }}
                     >
-                      <Button type="submit" className="w-full">
-                        Send Message <Send className="ml-2 h-4 w-4" />
+                      <Button 
+                        type="submit" 
+                        className="w-full" 
+                        disabled={isLoading}
+                      >
+                        {isLoading ? (
+                          <>
+                            <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                            Sending...
+                          </>
+                        ) : (
+                          <>
+                            Send Message <Send className="ml-2 h-4 w-4" />
+                          </>
+                        )}
                       </Button>
                     </motion.div>
                   </form>
