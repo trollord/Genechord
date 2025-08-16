@@ -468,7 +468,7 @@ const Contact = () => {
               <div className="bg-gray-50 p-4 rounded-lg">
                 <IndiaMap 
                   operatingStates={operatingStates}
-                  className="h-96"
+                  className=""
                 />
               </div>
             </motion.div>
