@@ -30,7 +30,7 @@ const Team = () => {
         'Venture capital and business leadership experience',
         'Financial discipline and strategic governance'
       ],
-      image: './gautam.JPG'
+      image: './gautam.webp'
     },
     {
       name: 'Palaniappan Subbiah Chettiar',
@@ -44,7 +44,7 @@ const Team = () => {
         'Strategic sales planning and territory management',
         'Team leadership and sales force development'
       ],
-      image: './palani.JPG'
+      image: './palani.webp'
     }
   ];
 
