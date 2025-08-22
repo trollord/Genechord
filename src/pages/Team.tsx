@@ -17,7 +17,7 @@ const Team = () => {
         'Deep understanding of reproductive healthcare challenges',
         'Expertise in pharmaceutical manufacturing and development'
       ],
-      image: './jaineel.JPG'
+      image: './jaineel.webp'
     },
     {
       name: 'Gautam Mehta',
