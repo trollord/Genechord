@@ -12,6 +12,7 @@ import ForDoctors from './pages/ForDoctors';
 import Team from './pages/Team';
 import Contact from './pages/Contact';
 import QRInfo from './pages/QRInfo';
+import Analytics from './pages/Analytics';
 
 // ScrollToTop component to scroll to top on route change
 const ScrollToTop = () => {
@@ -28,9 +29,6 @@ const ScrollToTop = () => {
 const AnimatedRoutes = () => {
   const location = useLocation();
 
-  // Check if current route is the QR info page
-  const isQRInfoPage = location.pathname === '/info';
-
   return (
     <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>
@@ -42,6 +40,7 @@ const AnimatedRoutes = () => {
         <Route path="/team" element={<Team />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/info" element={<QRInfo />} />
+        <Route path="/analytics" element={<Analytics />} />
       </Routes>
     </AnimatePresence>
   );
@@ -49,16 +48,17 @@ const AnimatedRoutes = () => {
 
 function App() {
   const location = useLocation();
-  const isQRInfoPage = location.pathname === '/info';
+  const isChromeHidden =
+    location.pathname === '/info' || location.pathname === '/analytics';
 
   return (
     <div className="flex flex-col min-h-screen">
-      {!isQRInfoPage && <Header />}
+      {!isChromeHidden && <Header />}
       <ScrollToTop />
-      <main className={isQRInfoPage ? '' : 'flex-grow'}>
+      <main className={isChromeHidden ? '' : 'flex-grow'}>
         <AnimatedRoutes />
       </main>
-      {!isQRInfoPage && <Footer />}
+      {!isChromeHidden && <Footer />}
     </div>
   );
 }
